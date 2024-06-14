@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         Sistema lavaderoPepe = new Sistema();
@@ -13,6 +15,9 @@ public class Main {
         lavaderoPepe.agregarPedido(pedido1);
         lavaderoPepe.agregarPedido(pedido2);
         lavaderoPepe.terminarPedido(pedido2);
-        lavaderoPepe.mostrarTodo();
+
+
+        List<Pedido> lavadosHoy = lavaderoPepe.obtenerTerminadosDelDia();
+        lavaderoPepe.mostrarPedidos(lavadosHoy);
     }
 }

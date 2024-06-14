@@ -1,6 +1,7 @@
 
 import java.util.Date;
 public class Pedido {
+    public Date getFecha;
     private int precioFinal;
     private Servicio serv;
     private Cliente cliente;
@@ -22,7 +23,15 @@ public class Pedido {
          this.precioFinal = this.cliente.getVehiculo().getPrecio() + this.serv.getPrecio();
     }
     public int getPrecioFinal() {
-        return precioFinal;
+        return this.precioFinal;
+    }
+
+    public Date getFecha() {
+        return this.fecha;
+    }
+
+    public Estado getEstado() {
+        return this.estado;
     }
 
     @Override

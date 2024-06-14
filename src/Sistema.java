@@ -13,25 +13,31 @@ public class Sistema {
         pedido.terminarPedido();
     }
 
-    public void mostrarTodo(){
-        for (Pedido p : this.pedidos){
+    public void mostrarPedidos(List<Pedido> lista ){
+        for (Pedido p : lista){
             System.out.println(p);
         }
     }
 
-    private List<Pedido> obtenerPorFechaYEstado(Date fecha, Estado estado) {
-        //
 
-        return pedidos;
+    private List<Pedido> obtenerPorFechaYEstado(Date fecha, Estado estado) {
+        List<Pedido> pedidosFiltro = new ArrayList<Pedido>();
+        for(Pedido p : this.pedidos){
+            if (p.getFecha().equals(fecha) && p.getEstado().equals(estado)){
+                pedidosFiltro.add(p);
+            }
+        }
+        return pedidosFiltro;
+
     }
 
     public List<Pedido> obtenerTerminadosDelDia(){
         return obtenerPorFechaYEstado(new Date(), Estado.TERMINADO);
     }
 
-
+    //terminar todos los del dia
     //obtenerTerminados
     //obtenerEnProceso
-    //terminarTodosLosDelDia
+    //
     //
 }
