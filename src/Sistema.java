@@ -8,5 +8,7 @@ public class Sistema {
         this.pedidos.add(pedido);
     }
 
-    //public void terminarPedido(){}
+    public void terminarPedido(Pedido pedido){
+        pedido.terminarPedido();
+    }
 }
