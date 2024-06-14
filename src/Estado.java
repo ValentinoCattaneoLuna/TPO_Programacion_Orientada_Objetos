@@ -1,6 +1,6 @@
 public enum Estado {
-    enProceso,
-    Terminado;
+    EN_PROCESO,
+    TERMINADO;
 
 
 }
