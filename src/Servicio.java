@@ -10,4 +10,9 @@ public class Servicio{
     public int getPrecio() {
         return this.precio;
     }
+
+    @Override
+    public String toString() {
+        return descripcion;
+    }
 }
