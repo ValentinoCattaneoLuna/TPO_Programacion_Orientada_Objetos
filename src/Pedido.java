@@ -33,6 +33,9 @@ public class Pedido {
     public Estado getEstado() {
         return this.estado;
     }
+    public Cliente getCliente(){
+        return this.cliente;
+    }
 
     @Override
     public String toString() {
