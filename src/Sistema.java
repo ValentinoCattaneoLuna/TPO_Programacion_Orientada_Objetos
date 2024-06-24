@@ -2,6 +2,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import java.net.URI;
+import java.math.BigDecimal;
+import com.twilio.Twilio;
+import com.twilio.converter.Promoter;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 public class Sistema {
 
     private List<Pedido> pedidos = new ArrayList<Pedido>();
@@ -11,6 +17,7 @@ public class Sistema {
 
     public void terminarPedido(Pedido pedido){
         pedido.terminarPedido();
+        enviarMensajeWhatsApp("Tu vehiculo ya esta listo para ser retirado",pedido.getCliente().getTelefono());
     }
 
     public void mostrarPedidos(List<Pedido> lista ){
@@ -64,7 +71,20 @@ public class Sistema {
     public List<Pedido> obtenerTodosEnProceso(){return obtenerPorEstado(Estado.EN_PROCESO);}
     public List<Pedido> obtenerTodosLosDeHoy(){return obtenerPorFecha(new Date());}
 
+    private void enviarMensajeWhatsApp(String mensaje, String numeroDestino) {
+        String ACCOUNT_SID = "sid";
+        String AUTH_TOKEN = "authtoken";
 
+        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+
+        Message message = Message.creator(
+                        new PhoneNumber("whatsapp:"+numeroDestino), // Usar el número de WhatsApp como destino
+                        new PhoneNumber("whatsapp:+14155238886"), // Número de WhatsApp como origen
+                        mensaje)
+                .create();
+
+        System.out.println("Mensaje enviado con SID: " + message.getSid());
+    }
 
 
 }
