@@ -83,7 +83,7 @@ public class Sistema {
                         mensaje)
                 .create();
 
-        System.out.println("Mensaje enviado con SID: " + message.getSid());
+        System.out.println("Mensaje enviado a: " + numeroDestino + "con exito");
     }
 
 
