@@ -20,4 +20,5 @@ public class Vehiculo {
     public String toString() {
         return nombre;
     }
+
 }
