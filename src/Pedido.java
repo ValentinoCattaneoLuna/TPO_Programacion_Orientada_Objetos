@@ -1,7 +1,7 @@
 
 import java.util.Date;
 public class Pedido {
-    public Date getFecha;
+
     private int precioFinal;
     private Servicio serv;
     private Cliente cliente;
