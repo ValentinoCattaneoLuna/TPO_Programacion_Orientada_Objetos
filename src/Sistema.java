@@ -84,16 +84,16 @@ public class Sistema {
     }
 
     private void enviarMensajeWhatsApp(String mensaje, String numeroDestino) {
-        String ACCOUNT_SID = "sid";
-        String AUTH_TOKEN = "authtoken";
-
-        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-
-        Message message = Message.creator(
-                        new PhoneNumber("whatsapp:"+numeroDestino), // Usar el número de WhatsApp como destino
-                        new PhoneNumber("whatsapp:+14155238886"), // Número de WhatsApp como origen
-                        mensaje)
-                .create();
+//        String ACCOUNT_SID = "sid";
+//        String AUTH_TOKEN = "authtoken";
+//
+//        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+//
+//        Message message = Message.creator(
+//                        new PhoneNumber("whatsapp:"+numeroDestino), // Usar el número de WhatsApp como destino
+//                        new PhoneNumber("whatsapp:+14155238886"), // Número de WhatsApp como origen
+//                        mensaje)
+//                .create();
 
         System.out.println("Mensaje enviado a: " + numeroDestino + " con éxito");
     }
