@@ -2,8 +2,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import java.net.URI;
-import java.math.BigDecimal;
 import com.twilio.Twilio;
 import com.twilio.converter.Promoter;
 import com.twilio.rest.api.v2010.account.Message;
@@ -67,6 +65,9 @@ public class Sistema {
     public List<Pedido> obtenerTerminadosDelDia(){
         return obtenerPorFechaYEstado(new Date(), Estado.TERMINADO);
     }
+
+    public List<Pedido> obtenerProcesosDelDia(){return obtenerPorFechaYEstado(new Date(), Estado.EN_PROCESO);}
+
     public List<Pedido> obtenerTodosLosTerminados(){return obtenerPorEstado(Estado.TERMINADO);}
     public List<Pedido> obtenerTodosEnProceso(){return obtenerPorEstado(Estado.EN_PROCESO);}
     public List<Pedido> obtenerTodosLosDeHoy(){return obtenerPorFecha(new Date());}

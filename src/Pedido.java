@@ -19,6 +19,10 @@ public class Pedido {
     public  void terminarPedido(){
         this.estado = Estado.TERMINADO;
     }
+
+    public void enProceso(){
+        this.estado = Estado.EN_PROCESO;
+    }
     public void calcularPrecio(){
          this.precioFinal = this.cliente.getVehiculo().getPrecio() + this.serv.getPrecio();
     }
@@ -39,6 +43,6 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return "Pedido{" + serv +" " + cliente +" " + cliente.getVehiculo() +" " +  estado + '}';
+        return "Pedido:" + serv +", Cliente:  " + cliente +", Vehiculo:  " + cliente.getVehiculo() +", Estado: " +  estado + '.';
     }
 }
