@@ -68,6 +68,8 @@ public class Sistema {
     public List<Pedido> obtenerTodosEnProceso(){return obtenerPorEstado(Estado.EN_PROCESO);}
     public List<Pedido> obtenerTodosLosDeHoy(){return obtenerPorFecha(new Date());}
 
+    public List<Pedido> obtenerProcesosDelDia(){return obtenerPorFechaYEstado(new Date(), Estado.EN_PROCESO);}
+
     private void enviarMensajeWhatsApp(String mensaje, String numeroDestino) {
         String ACCOUNT_SID = "sid";
         String AUTH_TOKEN = "authtoken";
