@@ -37,9 +37,12 @@ public class Pedido {
     public Cliente getCliente(){
         return this.cliente;
     }
+    public Object getServicio() {return serv;}
 
     @Override
     public String toString() {
         return "Pedido:" + this.serv +", Cliente:  " + this.cliente +", Vehiculo:  " + this.cliente.getVehiculo() +", Estado: " +  this.estado + '.';
     }
+
+
 }

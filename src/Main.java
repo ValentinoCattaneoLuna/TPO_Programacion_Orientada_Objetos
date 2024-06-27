@@ -19,5 +19,15 @@ public class Main {
 
         List<Pedido> lavadosHoy = lavaderoPepe.obtenerTerminadosDelDia();
         lavaderoPepe.mostrarPedidos(lavadosHoy);
+
+        System.out.println("----------------------------------------------------------------------");
+
+        List<Pedido> pedidosLavadoCompleto = lavaderoPepe.obtenerPorTipoServicio("Lavado completo");
+        System.out.println("Pedidos de Lavado completo:");
+        lavaderoPepe.mostrarPedidos(pedidosLavadoCompleto);
+
+        List<Pedido> pedidosLavadoExpress = lavaderoPepe.obtenerPorTipoServicio("lavado express");
+        System.out.println("Pedidos de lavado express");
+        lavaderoPepe.mostrarPedidos(pedidosLavadoExpress);
     }
 }
