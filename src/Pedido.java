@@ -40,6 +40,6 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return "Pedido{" + serv +" " + cliente +" " + cliente.getVehiculo() +" " +  estado + '}';
+        return "Pedido:" + this.serv +", Cliente:  " + this.cliente +", Vehiculo:  " + this.cliente.getVehiculo() +", Estado: " +  this.estado + '.';
     }
 }
