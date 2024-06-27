@@ -83,6 +83,9 @@ public class Sistema {
         System.out.println("Mensaje enviado a: " + numeroDestino + " con exito");
     }
 
+
+
+
     public long calcularCantPedidos(Estado estado){
         if (estado.equals(Estado.TERMINADO)){
             return this.obtenerTodosLosTerminados().stream().count();
@@ -92,4 +95,13 @@ public class Sistema {
     }
 
 
+    public List<Pedido> obtenerRangoPrecio(int precio1, int precio2) {
+        List<Pedido> listaFiltro = new ArrayList<>();
+        for (Pedido pedido : this.pedidos) {
+            if (pedido.getPrecioFinal() >= precio1 && pedido.getPrecioFinal() <= precio2) {
+                listaFiltro.add(pedido);
+            }
+        }
+        return listaFiltro;
+    }
 }
