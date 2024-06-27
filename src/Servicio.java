@@ -11,6 +11,10 @@ public class Servicio{
         return this.precio;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
     @Override
     public String toString() {
         return descripcion;
