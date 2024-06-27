@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -27,13 +28,13 @@ public class Sistema {
 
     public void terminarTodosLosDelDia(){
         for (Pedido p : this.pedidos){
-            if (p.getEstado().equals(Estado.EN_PROCESO) && p.getFecha().equals(new Date())){
+            if (p.getEstado().equals(Estado.EN_PROCESO) && p.getFecha().equals(LocalDate.now())){
                 p.terminarPedido();
             }
         }
     }
 
-    private List<Pedido> obtenerPorFechaYEstado(Date fecha, Estado estado) {
+    private List<Pedido> obtenerPorFechaYEstado(LocalDate fecha, Estado estado) {
         List<Pedido> pedidosFiltro = new ArrayList<Pedido>();
         for (Pedido p : this.pedidos){
             if (p.getFecha().equals(fecha) && p.getEstado().equals(estado)){
@@ -43,7 +44,7 @@ public class Sistema {
         return pedidosFiltro;
     }
 
-    private List<Pedido> obtenerPorFecha(Date fecha){
+    private List<Pedido> obtenerPorFecha(LocalDate fecha){
         List<Pedido> pedidosFiltro = new ArrayList<Pedido>();
         for (Pedido p : this.pedidos){
             if (p.getFecha().equals(fecha)){
@@ -64,23 +65,22 @@ public class Sistema {
     }
 
     public List<Pedido> obtenerTerminadosDelDia(){
-        return obtenerPorFechaYEstado(new Date(), Estado.TERMINADO);
+        return obtenerPorFechaYEstado(LocalDate.now(), Estado.TERMINADO);
     }
 
     public List<Pedido> obtenerTodosLosTerminados(){
         return obtenerPorEstado(Estado.TERMINADO);
     }
-
     public List<Pedido> obtenerTodosEnProceso(){
         return obtenerPorEstado(Estado.EN_PROCESO);
     }
 
     public List<Pedido> obtenerTodosLosDeHoy(){
-        return obtenerPorFecha(new Date());
+        return obtenerPorFecha(LocalDate.now());
     }
 
     public List<Pedido> obtenerProcesosDelDia(){
-        return obtenerPorFechaYEstado(new Date(), Estado.EN_PROCESO);
+        return obtenerPorFechaYEstado(LocalDate.now(), Estado.EN_PROCESO);
     }
 
     private void enviarMensajeWhatsApp(String mensaje, String numeroDestino) {
