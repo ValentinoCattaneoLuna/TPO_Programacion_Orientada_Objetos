@@ -12,8 +12,13 @@ public class Vehiculo {
         return this.precio;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
     @Override
     public String toString() {
         return nombre;
     }
+
 }

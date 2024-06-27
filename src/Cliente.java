@@ -28,4 +28,5 @@ public class Cliente {
     public String toString() {
         return nombre;
     }
+
 }

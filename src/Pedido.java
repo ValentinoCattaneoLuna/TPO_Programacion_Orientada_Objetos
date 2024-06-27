@@ -1,4 +1,5 @@
 
+import java.time.LocalDate;
 import java.util.Date;
 public class Pedido {
 
@@ -6,14 +7,14 @@ public class Pedido {
     private Servicio serv;
     private Cliente cliente;
     private Estado estado;
-    private Date fecha;
+    private LocalDate fecha;
 
 
     public Pedido(Servicio serv, Cliente cliente){
         this.serv = serv;
         this.cliente = cliente;
         this.estado = Estado.EN_PROCESO;
-        this.fecha = new Date();
+        this.fecha = LocalDate.now();
         this.calcularPrecio();
     }
 
@@ -27,7 +28,7 @@ public class Pedido {
         return this.precioFinal;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return this.fecha;
     }
 
@@ -41,8 +42,9 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return "Pedido:" + this.serv +", Cliente:  " + this.cliente +", Vehiculo:  " + this.cliente.getVehiculo() +", Estado: " +  this.estado + '.';
+        return "Pedido:" + this.serv +", Cliente:  " + this.cliente +", Vehiculo:  " + this.cliente.getVehiculo() +", Estado: " +  this.estado + ", Precio final:" + this.getPrecioFinal()+"$.";
     }
+
 
 
 }
