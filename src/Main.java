@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.text.ParseException;
-import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,8 +13,6 @@ public class Main {
 //        pepesys.agregarPedido(new Pedido(prueba,valen));
 //        List<Pedido> lavadosHoy = pepesys.obtenerProcesosDelDia();
 //        pepesys.mostrarPedidos(lavadosHoy);
-
-
 
         Sistema sistema = new Sistema();
         Scanner scanner = new Scanner(System.in);
@@ -32,6 +28,13 @@ public class Main {
         tiposServicios.add(new Servicio("Lavado Express", 5500));
         tiposServicios.add(new Servicio("Lavado Completo", 8000));
         tiposServicios.add(new Servicio("Detailing", 12000));
+
+
+        menu(sistema,scanner,tiposVehiculos,tiposServicios);
+
+    }
+
+    public  static void menu(Sistema sistema, Scanner scanner, List<Vehiculo> tiposVehiculos, List<Servicio> tiposServicios){
 
         while (true) {
             System.out.println("\nSistema de Gestión de Pedidos");
