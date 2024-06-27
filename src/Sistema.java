@@ -2,10 +2,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import java.net.URI;
-import java.math.BigDecimal;
 import com.twilio.Twilio;
-import com.twilio.converter.Promoter;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 public class Sistema {
@@ -84,6 +81,14 @@ public class Sistema {
                 .create();
 
         System.out.println("Mensaje enviado a: " + numeroDestino + " con exito");
+    }
+
+    public long calcularCantPedidos(Estado estado){
+        if (estado.equals(Estado.TERMINADO)){
+            return this.obtenerTodosLosTerminados().stream().count();
+        } else{
+            return this.obtenerTodosEnProceso().stream().count();
+        }
     }
 
 
