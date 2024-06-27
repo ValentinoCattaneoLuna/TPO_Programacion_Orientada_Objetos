@@ -69,18 +69,18 @@ public class Sistema {
     public List<Pedido> obtenerTodosLosDeHoy(){return obtenerPorFecha(new Date());}
 
     private void enviarMensajeWhatsApp(String mensaje, String numeroDestino) {
-        String ACCOUNT_SID = "sid";
-        String AUTH_TOKEN = "authtoken";
-
-        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-
-        Message message = Message.creator(
-                        new PhoneNumber("whatsapp:"+numeroDestino), // Usar el número de WhatsApp como destino
-                        new PhoneNumber("whatsapp:+14155238886"), // Número de WhatsApp como origen
-                        mensaje)
-                .create();
-
-        System.out.println("Mensaje enviado a: " + numeroDestino + " con exito");
+//        String ACCOUNT_SID = "sid";
+//        String AUTH_TOKEN = "authtoken";
+//
+//        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+//
+//        Message message = Message.creator(
+//                        new PhoneNumber("whatsapp:"+numeroDestino), // Usar el número de WhatsApp como destino
+//                        new PhoneNumber("whatsapp:+14155238886"), // Número de WhatsApp como origen
+//                        mensaje)
+//                .create();
+//
+//        System.out.println("Mensaje enviado a: " + numeroDestino + " con exito");
     }
 
     public long calcularCantPedidos(Estado estado){
@@ -92,4 +92,16 @@ public class Sistema {
     }
 
 
+    // Aca la funcion que muestre dependiendo si es lavado express / completo
+
+    public List<Pedido> obtenerPorTipoServicio(String tipoServicio) {
+        List<Pedido> pedidosFiltro = new ArrayList<Pedido>();
+        for (Pedido p : this.pedidos) {
+            if (p.getServicio().toString().equalsIgnoreCase(tipoServicio)) {
+                pedidosFiltro.add(p);
+            }
+        }
+        return pedidosFiltro;
+    }
 }
+
