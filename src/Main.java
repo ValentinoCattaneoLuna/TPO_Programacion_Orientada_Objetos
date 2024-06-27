@@ -18,16 +18,15 @@ public class Main {
 
 
 
-
-
         Sistema sistema = new Sistema();
         Scanner scanner = new Scanner(System.in);
 
-        // Definir tipos de vehículos y servicios
+
         List<Vehiculo> tiposVehiculos = new ArrayList<>();
         tiposVehiculos.add(new Vehiculo("Auto", 5000));
         tiposVehiculos.add(new Vehiculo("Moto", 2500));
         tiposVehiculos.add(new Vehiculo("Camioneta", 6500));
+
 
         List<Servicio> tiposServicios = new ArrayList<>();
         tiposServicios.add(new Servicio("Lavado Express", 5500));
@@ -48,20 +47,19 @@ public class Main {
                 opcion = scanner.nextInt();
             } catch (Exception e) {
                 System.out.println("Opción no válida, por favor ingrese un número.");
-                scanner.nextLine(); // Limpiar el buffer
+                scanner.nextLine();
                 continue;
             }
-            scanner.nextLine(); // Limpiar el buffer
+            scanner.nextLine();
 
             switch (opcion) {
                 case 1:
-                    // Lógica para agregar pedido
+
                     System.out.print("Ingrese el nombre del cliente: ");
                     String nombreCliente = scanner.nextLine();
                     System.out.print("Ingrese el teléfono del cliente: ");
                     String telefonoCliente = scanner.nextLine();
 
-                    // Mostrar tipos de vehículos y seleccionar uno
                     System.out.println("Seleccione el tipo de vehículo:");
                     for (int i = 0; i < tiposVehiculos.size(); i++) {
                         System.out.println((i + 1) + ". " + tiposVehiculos.get(i).getNombre());
@@ -71,10 +69,10 @@ public class Main {
                         vehiculoSeleccionado = scanner.nextInt() - 1;
                     } catch (Exception e) {
                         System.out.println("Opción no válida, por favor ingrese un número.");
-                        scanner.nextLine(); // Limpiar el buffer
+                        scanner.nextLine();
                         continue;
                     }
-                    scanner.nextLine(); // Limpiar el buffer
+                    scanner.nextLine();
 
                     Vehiculo vehiculo;
                     try {
@@ -84,10 +82,9 @@ public class Main {
                         continue;
                     }
 
-                    // Crear cliente con el vehículo seleccionado
                     Cliente cliente = new Cliente(nombreCliente, vehiculo, telefonoCliente);
 
-                    // Mostrar tipos de servicios y seleccionar uno
+
                     System.out.println("Seleccione el tipo de servicio:");
                     for (int i = 0; i < tiposServicios.size(); i++) {
                         System.out.println((i + 1) + ". " + tiposServicios.get(i).getDescripcion());
@@ -97,10 +94,10 @@ public class Main {
                         servicioSeleccionado = scanner.nextInt() - 1;
                     } catch (Exception e) {
                         System.out.println("Opción no válida, por favor ingrese un número.");
-                        scanner.nextLine(); // Limpiar el buffer
+                        scanner.nextLine();
                         continue;
                     }
-                    scanner.nextLine(); // Limpiar el buffer
+                    scanner.nextLine();
 
                     Servicio servicio;
                     try {
@@ -110,13 +107,13 @@ public class Main {
                         continue;
                     }
 
-                    // Crear y agregar el pedido
+
                     Pedido pedido = new Pedido(servicio, cliente);
                     sistema.agregarPedido(pedido);
                     System.out.println("Pedido agregado con éxito.");
                     break;
                 case 2:
-                    // Mostrar los pedidos en proceso
+
                     List<Pedido> pedidosEnProceso = sistema.obtenerTodosEnProceso();
                     if (pedidosEnProceso.isEmpty()) {
                         System.out.println("No hay pedidos en proceso.");
@@ -126,7 +123,7 @@ public class Main {
                     for (int i = 0; i < pedidosEnProceso.size(); i++) {
                         System.out.println((i + 1) + ". " + pedidosEnProceso.get(i).getCliente().getNombre());
                     }
-                    // Solicitar el nombre del cliente del pedido a terminar
+
                     System.out.print("Ingrese el nombre del cliente del pedido a terminar: ");
                     String nombreClienteTerminar = scanner.nextLine();
                     boolean pedidoTerminado = false;
@@ -143,12 +140,10 @@ public class Main {
                     }
                     break;
                 case 3:
-                    // Terminar todos los pedidos del día
                     sistema.terminarTodosLosDelDia();
                     System.out.println("Todos los pedidos del día han sido terminados.");
                     break;
                 case 4:
-                    // Mostrar filtros para elegir
                     System.out.println("Seleccione un filtro para mostrar los pedidos:");
                     System.out.println("1. Pedidos terminados del día");
                     System.out.println("2. Todos los pedidos terminados");
@@ -164,10 +159,10 @@ public class Main {
                         filtro = scanner.nextInt();
                     } catch (Exception e) {
                         System.out.println("Opción no válida, por favor ingrese un número.");
-                        scanner.nextLine(); // Limpiar el buffer
+                        scanner.nextLine();
                         continue;
                     }
-                    scanner.nextLine(); // Limpiar el buffer
+                    scanner.nextLine();
 
                     List<Pedido> pedidosFiltrados = new ArrayList<>();
                     switch (filtro) {
@@ -192,32 +187,32 @@ public class Main {
                             sistema.mostrarPedidos(pedidosFiltrados);
                             break;
                         case 6:
-                            // Solicitar el rango de precios
+
                             System.out.print("Ingrese el precio mínimo: ");
                             int precioMin;
                             try {
                                 precioMin = scanner.nextInt();
                             } catch (Exception e) {
                                 System.out.println("Precio no válido, por favor ingrese un número.");
-                                scanner.nextLine(); // Limpiar el buffer
+                                scanner.nextLine();
                                 continue;
                             }
-                            scanner.nextLine(); // Limpiar el buffer
+                            scanner.nextLine();
                             System.out.print("Ingrese el precio máximo: ");
                             int precioMax;
                             try {
                                 precioMax = scanner.nextInt();
                             } catch (Exception e) {
                                 System.out.println("Precio no válido, por favor ingrese un número.");
-                                scanner.nextLine(); // Limpiar el buffer
+                                scanner.nextLine();
                                 continue;
                             }
-                            scanner.nextLine(); // Limpiar el buffer
+                            scanner.nextLine();
                             pedidosFiltrados = sistema.obtenerRangoPrecio(precioMin, precioMax);
                             sistema.mostrarPedidos(pedidosFiltrados);
                             break;
                         case 7:
-                            // Solicitar el tipo de servicio
+
                             System.out.println("Seleccione el tipo de servicio:");
                             for (int i = 0; i < tiposServicios.size(); i++) {
                                 System.out.println((i + 1) + ". " + tiposServicios.get(i).getDescripcion());
@@ -227,10 +222,10 @@ public class Main {
                                 tipoServicioSeleccionado = scanner.nextInt() - 1;
                             } catch (Exception e) {
                                 System.out.println("Opción no válida, por favor ingrese un número.");
-                                scanner.nextLine(); // Limpiar el buffer
+                                scanner.nextLine();
                                 continue;
                             }
-                            scanner.nextLine(); // Limpiar el buffer
+                            scanner.nextLine();
 
                             try {
                                 Servicio servicioFiltro = tiposServicios.get(tipoServicioSeleccionado);
@@ -244,7 +239,6 @@ public class Main {
                     }
                     break;
                 case 0:
-                    // Salir del programa
                     System.out.println("Saliendo del sistema...");
                     scanner.close();
                     return;
