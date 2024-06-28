@@ -124,22 +124,23 @@ public class Main {
                     }
                     System.out.println("Pedidos en proceso:");
                     for (int i = 0; i < pedidosEnProceso.size(); i++) {
+                        Pedido p = pedidosEnProceso.get(i);
                         System.out.println((i + 1) + ". " + pedidosEnProceso.get(i).getCliente().getNombre());
                     }
+                    try {
+                        System.out.print("Ingrese el índice del pedido a terminar: ");
+                        int indicePedidoTerminar = scanner.nextInt()-1;
 
-                    System.out.print("Ingrese el nombre del cliente del pedido a terminar: ");
-                    String nombreClienteTerminar = scanner.nextLine();
-                    boolean pedidoTerminado = false;
-                    for (Pedido p : pedidosEnProceso) {
-                        if (p.getCliente().getNombre().equalsIgnoreCase(nombreClienteTerminar)) {
-                            sistema.terminarPedido(p);
+                        if (indicePedidoTerminar >= 0 && indicePedidoTerminar < pedidosEnProceso.size()) {
+                            Pedido pedidoATerminar = pedidosEnProceso.get(indicePedidoTerminar);
+                            sistema.terminarPedido(pedidoATerminar);
                             System.out.println("Pedido terminado con éxito.");
-                            pedidoTerminado = true;
-                            break;
+                        } else {
+                            System.out.println("Índice no válido.");
                         }
-                    }
-                    if (!pedidoTerminado) {
-                        System.out.println("Pedido no encontrado.");
+                    } catch (Exception e) {
+                        System.out.println("Error: entrada inválida. Asegúrese de ingresar un número válido.");
+                        scanner.nextLine();
                     }
                     break;
                 case 3:
