@@ -98,11 +98,18 @@ public class Sistema {
         System.out.println("Mensaje enviado a: " + numeroDestino + " con éxito");
     }
 
-    public long calcularCantPedidos(Estado estado){
+    public long calcularCantPedidosEstado(Estado estado){
         if (estado.equals(Estado.TERMINADO)){
             return this.obtenerTodosLosTerminados().stream().count();
         } else{
             return this.obtenerTodosEnProceso().stream().count();
+        }
+    }
+    public long calcularCantPedidosFecha(LocalDate fecha){
+        if (fecha.equals(LocalDate.now())){
+            return this.obtenerTodosLosDeHoy().stream().count();
+        } else{
+            return this.obtenerPorFecha(fecha).stream().count();
         }
     }
 
