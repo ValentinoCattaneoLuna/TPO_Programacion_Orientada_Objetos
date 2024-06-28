@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -172,26 +173,31 @@ public class Main {
                     switch (filtro) {
                         case 1:
                             pedidosFiltrados = sistema.obtenerTerminadosDelDia();
+                            System.out.println("Pedidos terminados del dia. Total: "+ (sistema.calcularCantPedidosFecha(LocalDate.now()) - sistema.calcularCantPedidosEstado(Estado.EN_PROCESO)) );
                             sistema.mostrarPedidos(pedidosFiltrados);
                             break;
                         case 2:
+                            System.out.println("Pedidos terminados. Total: "+ (sistema.calcularCantPedidosEstado(Estado.TERMINADO)) );
                             pedidosFiltrados = sistema.obtenerTodosLosTerminados();
                             sistema.mostrarPedidos(pedidosFiltrados);
                             break;
                         case 3:
+                            System.out.println("Pedidos en proceso. Total: "+ (sistema.calcularCantPedidosEstado(Estado.EN_PROCESO)) );
                             pedidosFiltrados = sistema.obtenerTodosEnProceso();
                             sistema.mostrarPedidos(pedidosFiltrados);
                             break;
                         case 4:
+                            System.out.println("Todos los pedidos del dia. Total: "+ (sistema.calcularCantPedidosFecha(LocalDate.now())) );
                             pedidosFiltrados = sistema.obtenerTodosLosDeHoy();
                             sistema.mostrarPedidos(pedidosFiltrados);
                             break;
                         case 5:
+                            System.out.println("Todos los pedidos en proceso del dia. Total: "+ ( (sistema.calcularCantPedidosFecha(LocalDate.now())) - (sistema.calcularCantPedidosEstado(Estado.TERMINADO)) ) );
                             pedidosFiltrados = sistema.obtenerProcesosDelDia();
                             sistema.mostrarPedidos(pedidosFiltrados);
                             break;
                         case 6:
-
+                            System.out.println("Pedidos en un rango de precio");
                             System.out.print("Ingrese el precio mínimo: ");
                             int precioMin;
                             try {
@@ -213,10 +219,11 @@ public class Main {
                             }
                             scanner.nextLine();
                             pedidosFiltrados = sistema.obtenerRangoPrecio(precioMin, precioMax);
+                            System.out.println("Total de pedidos: " + pedidosFiltrados.size());
                             sistema.mostrarPedidos(pedidosFiltrados);
                             break;
                         case 7:
-
+                            System.out.println("Pedidos por tipo de servicio");
                             System.out.println("Seleccione el tipo de servicio:");
                             for (int i = 0; i < tiposServicios.size(); i++) {
                                 System.out.println((i + 1) + ". " + tiposServicios.get(i).getDescripcion());
@@ -238,6 +245,7 @@ public class Main {
                                 System.out.println("Opción no válida, por favor seleccione un servicio de la lista.");
                                 continue;
                             }
+                            System.out.println("Total de pedidos: " + pedidosFiltrados.size());
                             sistema.mostrarPedidos(pedidosFiltrados);
                             break;
                     }
