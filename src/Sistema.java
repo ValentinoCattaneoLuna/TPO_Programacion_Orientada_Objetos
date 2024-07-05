@@ -22,7 +22,7 @@ public class Sistema {
 
     public void mostrarPedidos(List<Pedido> lista){
         for (Pedido p : lista){
-            System.out.println(p);
+            System.out.println(p+"\n");
         }
     }
 
