@@ -29,7 +29,7 @@ public class Sistema {
     public void terminarTodosLosDelDia(){
         for (Pedido p : this.pedidos){
             if (p.getEstado().equals(Estado.EN_PROCESO) && p.getFecha().equals(LocalDate.now())){
-                p.terminarPedido();
+                this.terminarPedido(p);
             }
         }
     }
